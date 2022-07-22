@@ -18,7 +18,21 @@ public class BoardService {
 	private BoardMapper mapper;
 	
 	public List<BoardVO> list(PageObject pageObject) {
+		pageObject.setTotalRow(mapper.getCount());
+		System.out.println("BoardService.list().pageObject : " + pageObject);
 		return mapper.list(pageObject);
 	}
+
+	public Object view(int no) {
+		// TODO Auto-generated method stub
+		return mapper.view(no);
+	}
+
+	public Object write(BoardVO vo) {
+		
+		return mapper.write(vo);
+	}
+
+	
 	
 }

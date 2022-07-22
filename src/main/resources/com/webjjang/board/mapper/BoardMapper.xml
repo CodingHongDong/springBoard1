@@ -10,13 +10,38 @@
  <!-- 게시판 리스트 : select -->
  	<select id="list" resultType="com.webjjang.board.vo.BoardVO">
  	select * from (
-	 	select rownum rnum, no, title, writer, writerDate, hit 
+	 	select rownum rnum, no, title, writer, writeDate, hit 
 	 		from (
-		 		select no, title, writer, writerDate, hit 
+		 		select no, title, writer, writeDate, hit 
 		 		from board 
 		 		order by no desc
 		 	)
 	)
 	where rnum between #{startRow} and #{endRow}
  	</select>
+ 	
+ 	<!-- 전체 데이터의 갯수를 구하는 쿼리 -->
+ 	<select id="getCount" resultType="Integer">
+ 		select count (*) from board
+ 	</select>
+ 	
+ 	<!-- 게시판 글보기 구하는 쿼리 -->
+ 	<select id="view" resultType="com.webjjang.board.vo.BoardVO">
+ 		select no, title, content, writer, writeDate, hit 
+ 		from board
+ 		where no = #{no}
+ 	</select>
+ 	
+ 	<!-- 게시판 조회수 1증가 - 글번호가 넘어온다. :no-->
+	<update id="increase">	
+		update board set hit = hit + 1	
+		where no = #{no}	
+	</update>
+ 	
+ 	<!-- 게시판 글쓰기 - BoardVO가 넘어온다. : vo 안에 있는 프로퍼티 이름만 쓰시면 된다. -->
+	<insert id="write">
+		insert into board(no, title, content, writer)
+		values (board_seq.nextval, #{title}, #{content}, #{writer})
+	</insert>
+ 	
 </mapper>

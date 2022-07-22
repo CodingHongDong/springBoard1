@@ -6,7 +6,7 @@ public class BoardVO {
 
 	private int no;
 	private String title, content, writer;
-	private Date writerDate;
+	private Date writeDate;
 	private int hit;
 	
 	public int getNo() {
@@ -33,11 +33,11 @@ public class BoardVO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public Date getWriterDate() {
-		return writerDate;
+	public Date getWriteDate() {
+		return writeDate;
 	}
-	public void setWriterDate(Date writerDate) {
-		this.writerDate = writerDate;
+	public void setWriteDate(Date writerDate) {
+		this.writeDate = writerDate;
 	}
 	public int getHit() {
 		return hit;
@@ -48,7 +48,7 @@ public class BoardVO {
 	@Override
 	public String toString() {
 		return "BoardVO [no=" + no + ", title=" + title + ", content=" + content + ", writer=" + writer
-				+ ", writerDate=" + writerDate + ", hit=" + hit + "]";
+				+ ", writerDate=" + writeDate + ", hit=" + hit + "]";
 	}
 	
 	
